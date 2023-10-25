@@ -18,7 +18,7 @@ namespace HGAPI.Models.DAL
         }
         public async Task<UserPlayerEN> GetById(int id)
         {
-            var userPlayer = await _context.userPlayerENs.FirstOrDefaultAsync(h => h.Id == id);
+            var userPlayer = await _context.userPlayerEN.FirstOrDefaultAsync(h => h.Id == id);
             return userPlayer != null ? userPlayer : new UserPlayerEN();
         }
         public async Task<int> Edit(UserPlayerEN userPlayer)
@@ -40,14 +40,14 @@ namespace HGAPI.Models.DAL
             var userPlayerDelete = await GetById(id);
             if (userPlayerDelete.Id >0)
             {
-                _context.userPlayerENs.Remove(userPlayerDelete); ;
+                _context.userPlayerEN.Remove(userPlayerDelete); ;
                 result = await _context.SaveChangesAsync();
             }
             return result;
         }
         private IQueryable<UserPlayerEN> Query(UserPlayerEN userPlayer)
         {
-            var query = _context.userPlayerENs.AsQueryable();
+            var query = _context.userPlayerEN.AsQueryable();
             if (!string.IsNullOrWhiteSpace(userPlayer.NamePlayer))
                 query = query.Where(h => h.NamePlayer.Contains(userPlayer.NamePlayer));
             if (!string.IsNullOrWhiteSpace(userPlayer.GmailPlayer))
