@@ -1,6 +1,7 @@
 ﻿using HGAPI.Models.DAL;
 using HGAPI.Models.EN;
 using HGAPI.DTOs.UserPlayerDTOs;
+using HGAPI.Auth;
 
 namespace HGAPI.Endpoints
 {
@@ -76,6 +77,25 @@ namespace HGAPI.Endpoints
                 else
                     return Results.StatusCode(500);
             });
+
+            app.MapPost("/userplayer/login", async (UserLoginInputDTO userLoginInput, UserPlayerDAL userPlayerDAL, IJwtAuthenticationService jwt) =>
+            {
+                UserLoginOutputDTO auth = await userPlayerDAL.Login(userLoginInput);
+
+                if(auth.Id > 0)
+                {
+                    string token = jwt.Authenticate(auth.UserName);
+                    auth.Token = token;
+                    return Results.Ok(auth);
+                }
+                else
+                {
+                    return Results.Unauthorized();
+                }
+            });
+
+
+
             app.MapPut("/userplayer", async (EditUserPlayerDTO userPlayerDTO, UserPlayerDAL userPlayerDAL) =>
             {
                 var userPlayer = new UserPlayerEN

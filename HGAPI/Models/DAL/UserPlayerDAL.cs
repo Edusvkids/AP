@@ -1,24 +1,49 @@
-﻿using HGAPI.Models.EN;
+﻿using HGAPI.DTOs.UserPlayerDTOs;
+using HGAPI.Models.EN;
 using Microsoft.EntityFrameworkCore;
 
 namespace HGAPI.Models.DAL
 {
     public class UserPlayerDAL
     {
-        readonly HGAPIContext _context;
+        readonly HGAPIContext _dbContext;
 
         public UserPlayerDAL(HGAPIContext hGAPIContext)
         {
-            _context = hGAPIContext;
+            _dbContext = hGAPIContext;
         }
         public async Task<int> Create(UserPlayerEN userPlayer)
         {
-            _context.Add(userPlayer);
-            return await _context.SaveChangesAsync();
+            _dbContext.Add(userPlayer);
+            return await _dbContext.SaveChangesAsync();
         }
+
+        /// <summary>
+        /// ///////////////////////////////////////////////
+        /// </summary>
+        /// <param name="pUser"></param>
+        /// <returns></returns>
+        public async Task<UserLoginOutputDTO> Login(UserLoginInputDTO pUser)
+        {
+            var userEn = await _dbContext.userPlayerEN.FirstOrDefaultAsync(s => s.PasswordPlayer == pUser.Password && s.NamePlayer == pUser.UserName);
+            if (userEn != null)
+            {
+                var userAuth = new UserLoginOutputDTO
+                {
+                    Id = userEn.Id,
+                    UserName = userEn.NamePlayer,
+                    Email = userEn.GmailPlayer
+                };
+                return userAuth;
+            }
+            else
+                return new UserLoginOutputDTO();
+        }
+        /// ///////////////////////////////////////////////
+        /// ///////////////////////////////////////////////
         public async Task<UserPlayerEN> GetById(int id)
         {
-            var userPlayer = await _context.userPlayerEN.FirstOrDefaultAsync(h => h.Id == id);
+            var userPlayer = await _dbContext.userPlayerEN.FirstOrDefaultAsync(h => h.Id == id);
             return userPlayer != null ? userPlayer : new UserPlayerEN();
         }
         public async Task<int> Edit(UserPlayerEN userPlayer)
@@ -30,7 +55,7 @@ namespace HGAPI.Models.DAL
                 userPlaterUpdate.NamePlayer = userPlayer.NamePlayer;
                 userPlaterUpdate.GmailPlayer = userPlayer.GmailPlayer;
                 userPlaterUpdate.PasswordPlayer = userPlayer.PasswordPlayer;
-                result = await _context.SaveChangesAsync();
+                result = await _dbContext.SaveChangesAsync();
             }
             return result;
         }
@@ -40,14 +65,14 @@ namespace HGAPI.Models.DAL
             var userPlayerDelete = await GetById(id);
             if (userPlayerDelete.Id >0)
             {
-                _context.userPlayerEN.Remove(userPlayerDelete); ;
-                result = await _context.SaveChangesAsync();
+                _dbContext.userPlayerEN.Remove(userPlayerDelete); ;
+                result = await _dbContext.SaveChangesAsync();
             }
             return result;
         }
         private IQueryable<UserPlayerEN> Query(UserPlayerEN userPlayer)
         {
-            var query = _context.userPlayerEN.AsQueryable();
+            var query = _dbContext.userPlayerEN.AsQueryable();
             if (!string.IsNullOrWhiteSpace(userPlayer.NamePlayer))
                 query = query.Where(h => h.NamePlayer.Contains(userPlayer.NamePlayer));
             if (!string.IsNullOrWhiteSpace(userPlayer.GmailPlayer))

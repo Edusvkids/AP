@@ -1,17 +1,17 @@
 using HGAPI.Endpoints;
 using HGAPI.Models.DAL;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<HGAPIContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("Conn"))
-);
+////////////////////////////////////////////////////////////
+builder.Services.AddDALDependecies(builder.Configuration);//
+////////////////////////////////////////////////////////////
 
-builder.Services.AddScoped<UserPlayerDAL>();
+
+
 
 var app = builder.Build();
 
@@ -24,5 +24,11 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+
+/****************************/
+app.UseAuthentication();//////
+app.UseAuthorization();///////
+/****************************/
 
 app.Run();
