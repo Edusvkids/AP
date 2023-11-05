@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio</title>
+    <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+   
+    <header class="header" id="header">
+        <nav class="navbar container">
+            <a href="./index.html" class="brand">THE WARRIOR</a>
+            <div class="burger" id="burger">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </div>
+            <div class="menu" id="menu">
+                <ul class="menu-inner">
+                    <li class="menu-item">
+                        <a asp-controller="Home" asp-action="Productos" class="menu-link" class=" bx bx-shopping-bag">Tienda</a>
+                    </li>
+                    <li class="menu-item">
+                        <a asp-controller="Home" asp-action="Descargar" class="menu-link" class=" bx bx-shopping-bag">Descargar</a>
+                    </li>
+                    <li class="menu-item">
+                        <a asp-controller="Home" asp-action="Cuenta" class="menu-link" class=" bx bx-shopping-bag">Cuenta</a>
+                    </li>
+                </ul>
+            </div>
+            
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="section wrapper wrapper-section">
+            <div class="container wrapper-column">
+                <div class="wrapper-figure">
+                    <img src="~/images/personaje.png" alt="Sneaker">
+                </div>
+                <div class="wrapper-content">
+                    <div class="wrapper-inform">
+                        <h1 class="heading-sm font-bold">THE WARRIOR</h1>
+                        <p class="text-md font-regular">
+                            The combine of breathable mesh without seams for a traditional and
+                            modern style to add the perfect amount of flash to make you shine.
+                        </p>
+                    </div>
+                    <div class="wrapper-detail">
+                       
+                    </div>
+                    <div class="wrapper-action">
+                        <button class="btn btn-darken">Jugar</button>
+                        <button class="btn btn-neutral">
+                            <i class="bx bx-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="js/Script.js"></script>
+
+</body>
+</html>
+
