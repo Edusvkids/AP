@@ -1,5 +1,6 @@
 using HGAPI.Endpoints;
 using HGAPI.Models.DAL;
+using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +11,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDALDependecies(builder.Configuration);//
 ////////////////////////////////////////////////////////////
 
-
+StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
 
 
 var app = builder.Build();
