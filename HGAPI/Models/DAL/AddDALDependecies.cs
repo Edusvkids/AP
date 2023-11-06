@@ -15,6 +15,7 @@ namespace HGAPI.Models.DAL
             ///////////////////////////////////////////////////////////
 
             services.AddScoped<UserPlayerDAL>();
+            services.AddScoped<AccountDAL>();
             return services;
         }
     }

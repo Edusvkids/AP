@@ -63,38 +63,6 @@ namespace HGAPI.Endpoints
                 else
                     return Results.NotFound(userPlayerResult);
             });
-            app.MapPost("/userplayer/", async (CreateUserPlayerDTO userPlayerDTO, UserPlayerDAL userPlayerDAL) =>
-            {
-                var userPlayer = new UserPlayerEN
-                {
-                    NamePlayer = userPlayerDTO.NamePlayer,
-                    GmailPlayer= userPlayerDTO.GmailPlayer,
-                    PasswordPlayer = userPlayerDTO.PasswordPlayer
-                };
-                int result = await userPlayerDAL.Create(userPlayer);
-                if (result != 0)
-                    return Results.Ok(result);
-                else
-                    return Results.StatusCode(500);
-            });
-
-            app.MapPost("/userplayer/login", async (UserLoginInputDTO userLoginInput, UserPlayerDAL userPlayerDAL, IJwtAuthenticationService jwt) =>
-            {
-                UserLoginOutputDTO auth = await userPlayerDAL.Login(userLoginInput);
-
-                if(auth.Id > 0)
-                {
-                    string token = jwt.Authenticate(auth.UserName);
-                    auth.Token = token;
-                    return Results.Ok(auth);
-                }
-                else
-                {
-                    return Results.Unauthorized();
-                }
-            });
-
-
 
             app.MapPut("/userplayer", async (EditUserPlayerDTO userPlayerDTO, UserPlayerDAL userPlayerDAL) =>
             {

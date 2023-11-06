@@ -1,10 +1,9 @@
-﻿using HGAPI.DTOs.UserPlayerDTOs;
-using HGAPI.Models.EN;
+﻿using HGAPI.Models.EN;
 using Microsoft.EntityFrameworkCore;
 
 namespace HGAPI.Models.DAL
 {
-    public class UserPlayerDAL
+	public class UserPlayerDAL
     {
         readonly HGAPIContext _dbContext;
 
@@ -12,35 +11,7 @@ namespace HGAPI.Models.DAL
         {
             _dbContext = hGAPIContext;
         }
-        public async Task<int> Create(UserPlayerEN userPlayer)
-        {
-            _dbContext.Add(userPlayer);
-            return await _dbContext.SaveChangesAsync();
-        }
-
-        /// <summary>
-        /// ///////////////////////////////////////////////
-        /// </summary>
-        /// <param name="pUser"></param>
-        /// <returns></returns>
-        public async Task<UserLoginOutputDTO> Login(UserLoginInputDTO pUser)
-        {
-            var userEn = await _dbContext.userPlayerEN.FirstOrDefaultAsync(s => s.PasswordPlayer == pUser.Password && s.NamePlayer == pUser.UserName);
-            if (userEn != null)
-            {
-                var userAuth = new UserLoginOutputDTO
-                {
-                    Id = userEn.Id,
-                    UserName = userEn.NamePlayer,
-                    Email = userEn.GmailPlayer
-                };
-                return userAuth;
-            }
-            else
-                return new UserLoginOutputDTO();
-        }
-        /// ///////////////////////////////////////////////
-        /// ///////////////////////////////////////////////
+        
         public async Task<UserPlayerEN> GetById(int id)
         {
             var userPlayer = await _dbContext.userPlayerEN.FirstOrDefaultAsync(h => h.Id == id);

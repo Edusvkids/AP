@@ -15,7 +15,7 @@ builder.Services.AddDALDependecies(builder.Configuration);//
 
 var app = builder.Build();
 
-app.AddUserPlayerEndpoints();
+app.AddEndpointDependencies();
 
 if (app.Environment.IsDevelopment())
 {
