@@ -11,7 +11,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\HGAPI.DTOs\HGAPI.DTOs.csproj" />
+    <ProjectReference Include="..\HGAPI\HGAPI.csproj" />
   </ItemGroup>
 
 </Project>

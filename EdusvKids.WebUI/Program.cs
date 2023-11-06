@@ -3,6 +3,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+
+
+
+builder.Services.AddHttpClient("API", c =>
+{
+    c.BaseAddress = new Uri(builder.Configuration["APIS:HGAPI"]);
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
