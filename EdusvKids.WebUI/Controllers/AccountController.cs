@@ -27,5 +27,18 @@ namespace EdusvKids.WebUI.Controllers
             else return View(userLogin);
         }
 
+        public IActionResult SignUp()
+		{
+			return View(new CreateUserPlayerDTO());
+		}
+
+        [HttpPost]
+        public async Task<IActionResult> SignUp(CreateUserPlayerDTO user)
+        {
+            var response = await _httpClient.PostAsJsonAsync("/account/signup", user);
+            if (response.IsSuccessStatusCode)
+                return Redirect("/Home/Index");
+            else return View(user);
+        }
     }
 }
