@@ -41,9 +41,11 @@
                         </div>
                     </div>
                     <div class="proCard_buttons">
-                        <a asp-controller="Home" asp-action="Pagar" class="btn btn-primary btn-lg">
-                            Pagar
-                        </a>
+                       
+
+                        <stripe-buy-button buy-button-id="buy_btn_1O9J9WDIltxHxTflwLJqX7gS"
+                                           publishable-key="pk_test_51O841cDIltxHxTflVgkp389NXGKhgDqW4jQLmC8pwkeHFM2YycwurwL7OdlrzKVlgiLQZzDOKGbm78XNWGA0VK7200v1v9SSsc">
+                        </stripe-buy-button>
                     </div>
                 </div>
                 <div class="proCard_images-section">
@@ -55,7 +57,9 @@
             </div>
         </div>
     </div>
-
+    <script async
+            src="https://js.stripe.com/v3/buy-button.js">
+    </script>
 
 </body>
 </html>

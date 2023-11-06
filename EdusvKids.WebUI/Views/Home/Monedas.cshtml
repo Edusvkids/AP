@@ -34,7 +34,11 @@
                         550 monedas
                     </p>
                 </div>
-                <button type="button" class="btn btn-warning">Comprar</button>
+               
+
+                <stripe-buy-button buy-button-id="buy_btn_1O84SqDIltxHxTflLV1z7DdB"
+                                   publishable-key="pk_test_51O841cDIltxHxTflVgkp389NXGKhgDqW4jQLmC8pwkeHFM2YycwurwL7OdlrzKVlgiLQZzDOKGbm78XNWGA0VK7200v1v9SSsc">
+                </stripe-buy-button>
 
             </div>
             <div class="card">
@@ -149,6 +153,9 @@
         </button>
     </div>
     <script src="~/js/monedas.js"></script>
+    <script async
+       src="https://js.stripe.com/v3/buy-button.js">
+    </script>
 
 </body>
 </html>
