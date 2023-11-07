@@ -9,18 +9,29 @@
 
 </head>
 <body>
-    <nav class="navbar">
+    <header class="header" id="header">
+        <nav class="navbar container">
+            <a href="./index.html" class="brand">THE WARRIOR</a>
+            <div class="burger" id="burger">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </div>
+            <div class="menu" id="menu">
+                <ul class="menu-inner">
+                    <li class="menu-item">
+                        <a asp-controller="Home" asp-action="Productos" class="menu-link" class=" bx bx-shopping-bag">Tienda</a>
+                    </li>
+                    <li class="menu-item">
+                        <a asp-controller="Home" asp-action="Descargar" class="menu-link" class=" bx bx-shopping-bag">Descargar</a>
+                    </li>
+                    <li class="menu-item">
+                        <a asp-controller="Account" asp-action="SignIn" class="menu-link" class=" bx bx-shopping-bag">Cuenta</a>
+                    </li>
+                </ul>
+            </div>
 
-        <div class="logo">The Warrior</div>
-
-        <div class="nav-links">
-        </div>
-
-    </nav>
-
-    <header class="header">
-        <h1>Design for the color impaired</h1>
-
+        </nav>
     </header>
 
     <div class="cards">
