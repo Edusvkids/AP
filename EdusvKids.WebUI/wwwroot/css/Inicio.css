@@ -51,6 +51,7 @@ body {
   text-transform: uppercase;
   letter-spacing: -0.08rem;
   transition: opacity 150ms linear;
+  top:200px;
 }
 
 .marvel, .studios {
