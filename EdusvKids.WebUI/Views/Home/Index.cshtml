@@ -2,67 +2,108 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Inicio</title>
-    <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
-    <link rel="stylesheet" href="/css/style.css">
+    <title>Pagina</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="~/css/Index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 
 </head>
 <body>
-   
-    <header class="header" id="header">
-        <nav class="navbar container">
-            <a href="./index.html" class="brand">THE WARRIOR</a>
-            <div class="burger" id="burger">
-                <span class="burger-line"></span>
-                <span class="burger-line"></span>
-                <span class="burger-line"></span>
+    <header>
+        <div class="banner"></div>
+        <nav>
+
+            <div id="logo">
+
+
+
+                The <br> Warrior
             </div>
-            <div class="menu" id="menu">
-                <ul class="menu-inner">
-                    <li class="menu-item">
-                        <a asp-controller="Home" asp-action="Productos" class="menu-link" class=" bx bx-shopping-bag">Tienda</a>
-                    </li>
-                    <li class="menu-item">
-                        <a asp-controller="Home" asp-action="Descargar" class="menu-link" class=" bx bx-shopping-bag">Descargar</a>
-                    </li>
-                    <li class="menu-item">
-                        <a asp-controller="Account" asp-action="SignIn" class="menu-link" class=" bx bx-shopping-bag">Cuenta</a>
-                    </li>
-                </ul>
-            </div>
-            
+            <ul class="navigation-menu">
+                <li>
+                    
+                    <a asp-controller="Home" asp-action="Productos">Tienda</a>
+                <li>
+                    <a asp-controller="Home" asp-action="Descargar">Descargar</a>
+
+
+                </li>
+                <li>
+                    <a asp-controller="Home" asp-action="Cuenta">Cuenta</a>
+
+                </li>
+
+            </ul>
+
         </nav>
     </header>
+    <section class="hero">
+        <h1>
+            Explora mundos fantásticos, descubre secretos y tesoros
+        </h1>
 
-    <main class="main">
-        <section class="section wrapper wrapper-section">
-            <div class="container wrapper-column">
-                <div class="wrapper-figure">
-                    <img src="~/images/personaje.png" alt="Sneaker">
-                </div>
-                <div class="wrapper-content">
-                    <div class="wrapper-inform">
-                        <h1 class="heading-sm font-bold">THE WARRIOR</h1>
-                        <p class="text-md font-regular">
-                          Explora mundos fantásticos, encuentra aliados y enemigos, descubre secretos y tesoros
-                            ¿Podrás cumplir tu misión?
-                        </p>
-                    </div>
-                    <div class="wrapper-detail">
-                       
-                    </div>
-                    <div class="wrapper-action">
-                        <button class="btn btn-darken">Jugar</button>
-                        <button class="btn btn-neutral">
-                            <i class="bx bx-heart"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-    <script src="js/Script.js"></script>
+
+    </section>
+
+
+    <section>
+        <h2>¡Descubre más!</h2>
+
+        <ul class="services">
+            <li class="card-large card-dark card-wide" id="serv-groom">
+                <div class="card-image"><img src="~/images/juego.jpg"></div>
+                <ul>
+                    Compra Monedas
+                    <span class="subtitle">La victoria tiene un precio, ¡pero con nuestras monedas, la gloria está garantizada!</span>
+                    <li><a href="#">Bolsa de Monedas</a><span>1,200 monedas</span></li>
+                    <li>
+                        <a href="#"> Saco de monedas</a><span>
+                            2,500 monedas
+                        </span>
+                    </li>
+                    <li><a href="#"> Puñado de monedas</a><span>80 monedas</span></li>
+
+
+                </ul>
+
+
+            </li>
+            <li class="card-large card-dark card-wide" id="serv-board">
+                <div class="card-image"><img src="~/images/juego2.jpg"></div>
+                <ul>
+
+
+                    Pixel perfecto, diversión sin fin. ¡Experimenta la era dorada de los videojuegos en cada nivel!
+
+
+                </ul>
+
+            </li>
+        </ul>
+    </section>
+
+    <section id="locate">
+
+        <div>
+            <h2>The  Warrior</h2>
+            <p>"Desafía los límites, vive la fantasía: tu épica aventura te espera frente a la pantalla."</p>
+
+            <button class="btn-outline-dark btn-hover-color">
+                <span class="material-symbols-outlined">
+                    games
+                </span> Jugar
+            </button>
+        </div>
+        </div>
+    </section>
+
+
+
 
 </body>
 </html>
-
