@@ -413,3 +413,7 @@ nav {
         align-items: center;
         grid-gap: 16px;
     }
+
+a {
+    text-decoration: none;
+}
