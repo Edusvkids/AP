@@ -7,7 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\js\Monedas.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\css\Pago.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\Monedas.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\js\Monedas.js" />
   </ItemGroup>
 
   <ItemGroup>
