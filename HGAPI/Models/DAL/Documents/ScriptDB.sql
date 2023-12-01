@@ -34,3 +34,11 @@ CREATE TABLE PurchaseOrder(
    foreign key (IdUserPlayer) references UserPlayerEN(Id)
 );
 GO
+
+CREATE TABLE UserPlayerProduct(
+	Id int identity (1,1) primary key,
+	NamePlayer VARCHAR(50) NOT NULL,
+	GmailPlayer VARCHAR(50) NOT NULL,
+	PruductStatus varchar (50),
+);
+go
