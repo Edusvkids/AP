@@ -15,7 +15,8 @@ namespace HGAPI.Endpoints
 				{
 					NamePlayer = userPlayerDTO.NamePlayer,
 					GmailPlayer = userPlayerDTO.GmailPlayer,
-					PasswordPlayer = userPlayerDTO.PasswordPlayer
+					PasswordPlayer = userPlayerDTO.PasswordPlayer,
+					LevelPlayer = userPlayerDTO.LevelPlayer
 				};
 				int result = await accountDAL.SignUp(userPlayer);
 				if (result != 0)

@@ -42,7 +42,8 @@ namespace HGAPI.Endpoints
                         Id = h.Id,
                         NamePlayer = h.NamePlayer,
                         GmailPlayer = h.GmailPlayer,
-                        PasswordPlayer = h.PasswordPlayer
+                        PasswordPlayer = h.PasswordPlayer,
+                        LevelPlayer = h.LevelPlayer
                     });
                 });
                 return userPlayerResult;
@@ -56,7 +57,8 @@ namespace HGAPI.Endpoints
                     Id = userPlayer.Id,
                     NamePlayer = userPlayer.NamePlayer,
                     GmailPlayer = userPlayer.GmailPlayer,
-                    PasswordPlayer = userPlayer.PasswordPlayer
+                    PasswordPlayer = userPlayer.PasswordPlayer,
+                    LevelPlayer = userPlayer.LevelPlayer
                 };
                 if (userPlayerResult.Id > 0)
                     return Results.Ok(userPlayerResult);
@@ -71,7 +73,8 @@ namespace HGAPI.Endpoints
                     Id = userPlayerDTO.Id,
                     NamePlayer = userPlayerDTO.NamePlayer,
                     GmailPlayer = userPlayerDTO.GmailPlayer,
-                    PasswordPlayer = userPlayerDTO.PasswordPlayer
+                    PasswordPlayer = userPlayerDTO.PasswordPlayer,
+                    LevelPlayer = userPlayerDTO.LevelPlayer
                 };
                 int result = await userPlayerDAL.Edit(userPlayer);
                 if (result != 0)

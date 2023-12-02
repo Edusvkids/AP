@@ -18,5 +18,9 @@ namespace HGAPI.DTOs.UserPlayerDTOs
         [Required(ErrorMessage = "El campo Contraseña es obligatorio")]
         [MaxLength(50, ErrorMessage = "El Campo contraseña no puede tener mas de 50 carateres.")]
         public string PasswordPlayer { get; set; }
+
+        [Display(Name ="Nivel")]
+        [Required(ErrorMessage ="El campo Nivel es obligatorio")]
+        public int LevelPlayer { get; set; }
     }
 }

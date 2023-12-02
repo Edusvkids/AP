@@ -14,5 +14,8 @@ namespace HGAPI.DTOs.UserPlayerDTOs
 
         [Display(Name ="Contraseña")]
         public string PasswordPlayer { get; set; }
+
+        [Display(Name ="Nivel")]
+        public int LevelPlayer { get; set; }
     }
 }
