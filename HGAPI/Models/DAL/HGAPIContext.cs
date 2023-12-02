@@ -10,7 +10,5 @@ namespace HGAPI.Models.DAL
 
         }
         public DbSet<UserPlayerEN> userPlayerEN { get; set; }
-
-        public DbSet<UserPlayerProductEN> UserPlayerProduct {  get; set; }
     }
 }
