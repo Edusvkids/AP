@@ -10,6 +10,7 @@ namespace HGAPI.DTOs.UserPlayerDTOs
             NamePlayer = getIdResultUserPlayerDTO.NamePlayer;
             GmailPlayer = getIdResultUserPlayerDTO.GmailPlayer;
             PasswordPlayer = getIdResultUserPlayerDTO.PasswordPlayer;
+            LevelPlayer = getIdResultUserPlayerDTO.LevelPlayer;
         }
         public EditUserPlayerDTO()
         {
@@ -33,5 +34,10 @@ namespace HGAPI.DTOs.UserPlayerDTOs
         [Required(ErrorMessage = "El campo Contraseña es obligatorio")]
         [MaxLength(50, ErrorMessage = "El Campo contraseña no puede tener mas de 50 carateres.")]
         public string PasswordPlayer { get; set; }
+
+        [Display(Name ="Nivel")]
+        [Required(ErrorMessage ="El campo Nivel es obligatorio")]
+        [MaxLength(3,ErrorMessage ="El campo Level no puede tener mas de 3 carateres")]
+        public int LevelPlayer { get; set; }
     }
 }

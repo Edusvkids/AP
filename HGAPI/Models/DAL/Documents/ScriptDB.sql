@@ -8,37 +8,28 @@ CREATE TABLE UserPlayerEN(
   NamePlayer VARCHAR(50) NOT NULL,
   GmailPlayer VARCHAR(50) NOT NULL,
   PasswordPlayer VARCHAR(30) NOT NULL,
+  LevelPlayer INT DEFAULT 1 not null
 );
 GO
 
 CREATE TABLE ProductGames(
    Id int IDENTITY (1,1) PRIMARY KEY,
-   IdUserPlayer int,
    NameProduct VARCHAR(50) NOT NULL,
    DescriptionProduct VARCHAR(100) NOT NULL,
    PriceProduct int NOT NULL,
    TypeProduct VARCHAR(20) NOT NULL,
-   bought int NOT NULL,
-   foreign key (IdUserPlayer) references UserPlayerEN(Id)
 );
 GO
 
 CREATE TABLE PurchaseOrder(
    Id int IDENTITY (1,1) PRIMARY KEY,
    IdUserPlayer int,
+   IdProductGames int,
    NameOrder VARCHAR(50) NOT NULL,
    DateOrder DATE NOT NULL,
    Headline VARCHAR(30) NOT NULL,
-   SubTotal int NOT NULL,
    Total int NOT NULL,
-   foreign key (IdUserPlayer) references UserPlayerEN(Id)
+   foreign key (IdUserPlayer) references UserPlayerEN(Id),
+   foreign key (IdProductGames) references ProductGames(Id)
 );
 GO
-
-CREATE TABLE UserPlayerProduct(
-	Id int identity (1,1) primary key,
-	NamePlayer VARCHAR(50) NOT NULL,
-	GmailPlayer VARCHAR(50) NOT NULL,
-	PruductStatus varchar (50),
-);
-go

@@ -26,6 +26,7 @@ namespace HGAPI.Models.DAL
                 userPlaterUpdate.NamePlayer = userPlayer.NamePlayer;
                 userPlaterUpdate.GmailPlayer = userPlayer.GmailPlayer;
                 userPlaterUpdate.PasswordPlayer = userPlayer.PasswordPlayer;
+                userPlaterUpdate.LevelPlayer = userPlayer.LevelPlayer;
                 result = await _dbContext.SaveChangesAsync();
             }
             return result;

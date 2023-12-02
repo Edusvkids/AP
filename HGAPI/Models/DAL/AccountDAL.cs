@@ -33,7 +33,7 @@ namespace HGAPI.Models.DAL
 				{
 					Id = userEn.Id,
 					UserName = userEn.NamePlayer,
-					Email = userEn.GmailPlayer
+					Email = userEn.GmailPlayer,
 				};
 				return userAuth;
 			}
