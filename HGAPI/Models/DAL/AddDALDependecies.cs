@@ -16,6 +16,7 @@ namespace HGAPI.Models.DAL
 
             services.AddScoped<UserPlayerDAL>();
             services.AddScoped<AccountDAL>();
+            services.AddScoped<ProductGamesDAL>();
             return services;
         }
     }
