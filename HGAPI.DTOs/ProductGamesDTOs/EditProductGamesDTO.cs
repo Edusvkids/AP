@@ -34,7 +34,7 @@ namespace HGAPI.DTOs.ProductGamesDTOs
 
         [Display(Name = "precio")]
         [Required(ErrorMessage = "El campo precio es obligatorio")]
-        [MaxLength(2, ErrorMessage = "El campo precio no puede tener mas de 50 caracteres")]
+        [MaxLength(50, ErrorMessage = "El campo precio no puede tener mas de 50 caracteres")]
         public int PriceProduct { get; set; }
 
         [Display(Name = "tipo de producto")]

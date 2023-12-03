@@ -90,7 +90,7 @@ namespace HGAPI.Endpoints
                 };
                 int result = await productGamesDal.Edit(productGames);
                 if (result != 0)
-                    return Results.Ok();
+                    return Results.Ok(result);
                 else
                     return Results.StatusCode(500);
             });

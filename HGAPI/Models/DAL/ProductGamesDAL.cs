@@ -31,10 +31,10 @@ namespace HGAPI.Models.DAL
             var productGamesUpdate = await GetById(productGames.Id);
             if (productGamesUpdate.Id != 0)
             {
-                productGamesUpdate.NameProduct = productGamesUpdate.NameProduct;
-                productGamesUpdate.DescriptionProduct = productGamesUpdate.DescriptionProduct;
-                productGamesUpdate.PriceProduct = productGamesUpdate.PriceProduct;
-                productGamesUpdate.TypeProduct = productGamesUpdate.TypeProduct;
+                productGamesUpdate.NameProduct = productGames.NameProduct;
+                productGamesUpdate.DescriptionProduct = productGames.DescriptionProduct;
+                productGamesUpdate.PriceProduct = productGames.PriceProduct;
+                productGamesUpdate.TypeProduct = productGames.TypeProduct;
                 result = await _context.SaveChangesAsync();
             }
             return result;
