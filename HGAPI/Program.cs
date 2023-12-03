@@ -17,7 +17,7 @@ StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey"
 var app = builder.Build();
 
 app.AddEndpointDependencies();
-
+app.AddProductGamesEndPoints();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
