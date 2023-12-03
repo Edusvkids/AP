@@ -1,13 +1,13 @@
-﻿using HGAPI.Models.DAL;
+﻿using HGAPI.DTOs.ProductGamesDTOs;
+using HGAPI.Models.DAL;
 using HGAPI.Models.EN;
-using HGAPI.DTOs.ProductGamesDTOs;
 namespace HGAPI.Endpoints
 {
     public static class ProductGamesEndpoint
     {
         public static void AddProductGamesEndPoints(this WebApplication app)
         {
-            app.MapPost("/Product/Search", async (SearchQueryProductGamesDTO productGamesDTO, ProductGamesDAL productGamesDAL) =>
+            app.MapPost("/product/Search", async (SearchQueryProductGamesDTO productGamesDTO, ProductGamesDAL productGamesDAL) =>
             {
                 var productGames = new ProductGames
                 {
