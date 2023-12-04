@@ -2,65 +2,82 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Aumento de vida </title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.css'>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/icon.css'>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/themes/github/assets/fonts/octicons-local.ttf'>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/themes/github/assets/fonts/octicons.svg'>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/themes/github/assets/fonts/octicons.ttf'>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/themes/github/assets/fonts/octicons.woff'>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.css'>
+    <title>Vidas</title>
+    <link rel='stylesheet' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'>
     <link rel="stylesheet" href="~/css/Vida.css">
 
 </head>
 <body>
-    <div class="ui centered grid">
-        <div class="row">
-            <div class="proCard_content">
-                <div class="proCard_info">
-                    <div class="proCard_text">
-                        <div class="brand-name group">
-                            <h3> Aumentos de vida</h3>
-                            <span class="proCard_price">120 Monedas</span>
-                        </div>
-                        <div class="proCard_description">
-                            <h4>Descripcion</h4>
-                            <h2>
-                                Aumentara la vida maxima del player permanentemente
-                                de 100 a 200.
-                            </h2>
-                        </div>
-                        <div class="proCard_colors">
-                        </div>
-                        <div class="size-quantity group">
-                            <div class="proCard_size">
-                            </div>
-                            <div class="proCard_quantity">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="proCard_buttons">
-                       
-
-                        <stripe-buy-button buy-button-id="buy_btn_1O9J9WDIltxHxTflwLJqX7gS"
-                                           publishable-key="pk_test_51O841cDIltxHxTflVgkp389NXGKhgDqW4jQLmC8pwkeHFM2YycwurwL7OdlrzKVlgiLQZzDOKGbm78XNWGA0VK7200v1v9SSsc">
-                        </stripe-buy-button>
-                    </div>
+    <nav class="flex-nav">
+        <div class="container">
+            <div class="grid menu">
+                <div class="column-xs-8 column-md-6">
+                    <p id="highlight">The Warrior</p>
                 </div>
-                <div class="proCard_images-section">
-                    <div class="proCard_slider">
-                        <div><img src="~/images/Caja.jpg" /></div>
-
-                    </div>
+                <div class="column-xs-4 column-md-6">
+                    <a href="#" class="toggle-nav">Menu <i class="ion-navicon-round"></i></a>
+                    <ul>
+                        <li class="nav-item">
+                            <a asp-controller="Home" asp-action="Productos">Tienda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-controller="Home" asp-action="Descargar">Descargar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-controller="Home" asp-action="Cuenta">Cuenta</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </div>
-    <script async
-            src="https://js.stripe.com/v3/buy-button.js">
-    </script>
+    </nav>
+    <main>
+        <div class="container">
 
+            <div class="grid product">
+                <div class="column-xs-12 column-md-7">
+                    <div class="product-gallery">
+                        <div class="product-image">
+                            <img class="active" src="https://i.pinimg.com/564x/e8/99/be/e899be4ee27d08f84dee393ff39e8913.jpg">
+                        </div>
+                        <ul class="image-list">
+                            <li class="image-item"><img src="https://i.pinimg.com/564x/b7/08/5d/b7085d0a3c70020b9b30736349a3e8ae.jpg"></li>
+                            <li class="image-item"><img src="https://i.pinimg.com/564x/27/20/48/2720488c28fe5e140b18fa53783bab81.jpg"></li>
+                            <li class="image-item"><img src="https://i.pinimg.com/564x/e1/17/de/e117de933783fa48980b0ae76ec9a537.jpg"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column-xs-12 column-md-5">
+                    <h1>
+                        Aumentos de vida
+                    </h1>
+                    <h2>
+                        2.00 US$
+                    </h2>
+                    <div class="description">
+                        <p>Aumentar la vida maxima del player permanentemente de 100 a 200</p>
+                    </div>
+
+                   
+                    <button class="add-to-cart">
+                        <a href="https://buy.stripe.com/test_fZe2bQ7Okaao7289AH">
+                            Comprar
+                        </a>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <footer>
+        <div class="grid">
+            <div class="column-xs-12">
+                <p class="copyright">&copy; The Warrior
+            </div>
+        </div>
+    </footer>
+    <script src="~/js/Vida.js"></script>
 </body>
 </html>
+
 

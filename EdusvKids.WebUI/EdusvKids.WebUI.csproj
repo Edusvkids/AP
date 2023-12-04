@@ -8,15 +8,18 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\js\Monedas.js" />
+    <Content Remove="wwwroot\js\Vida.js" />
   </ItemGroup>
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\css\Pago.css" />
     <_ContentIncludedByDefault Remove="wwwroot\js\Monedas.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\Vida.js" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="wwwroot\js\Monedas.js" />
+    <None Include="wwwroot\js\Vida.js" />
   </ItemGroup>
 
   <ItemGroup>
