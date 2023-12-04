@@ -11,6 +11,6 @@ namespace HGAPI.DTOs.PurchaseOrderDTOs
         [Display(Name ="Nombre")]
         public string NameOrder { get; set; }
 
-        [Display(Name ="")]
+        [Display(Name ="datos")]
     }
 }
