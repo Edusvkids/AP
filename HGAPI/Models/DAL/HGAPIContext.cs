@@ -11,5 +11,6 @@ namespace HGAPI.Models.DAL
         }
         public DbSet<UserPlayerEN> userPlayerEN { get; set; }
         public DbSet<ProductGames> productGames { get; set; }
+        public DbSet<PurchaseOrder> purchaseOrder { get; set; }
     }
 }
