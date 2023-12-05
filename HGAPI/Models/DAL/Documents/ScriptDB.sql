@@ -28,7 +28,7 @@ CREATE TABLE PurchaseOrder(
    NameOrder VARCHAR(50) NOT NULL,
    DateOrder DATE NOT NULL,
    Headline VARCHAR(30) NOT NULL,
-   StateOrder varchar(50),
+   StateOrder varchar(50) default ('pending'),
    Total int NOT NULL,
    foreign key (IdUserPlayer) references UserPlayerEN(Id),
    foreign key (IdProductGames) references ProductGames(Id)

@@ -63,7 +63,7 @@ namespace HGAPI.Endpoints
                     NameOrder = purchaseOrderDTO.NameOrder,
                     DateOrder = purchaseOrderDTO.DateOrder,
                     Headline = purchaseOrderDTO.Headline,
-                    StateOrder = purchaseOrderDTO.StateOrder,
+                    StateOrder = "Pendig",
                     Total = purchaseOrderDTO.Total,
                 };
                 int result = await purchaseOrderDAL.Create(purchaseOrder);
