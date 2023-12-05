@@ -33,6 +33,7 @@ namespace HGAPI.Models.DAL
                 purchaseOrderUpdate.NameOrder = purchaseOrder.NameOrder;
                 purchaseOrderUpdate.DateOrder = purchaseOrder.DateOrder;
                 purchaseOrderUpdate.Headline = purchaseOrder.Headline;
+                purchaseOrderUpdate.StateOrder = purchaseOrder.StateOrder;
                 purchaseOrderUpdate.Total = purchaseOrder.Total;
                 result = await _context.SaveChangesAsync();
             }

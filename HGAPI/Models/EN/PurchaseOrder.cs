@@ -10,6 +10,7 @@ namespace HGAPI.Models.EN
         public string NameOrder { get; set; }
         public DateTime DateOrder { get; set; }
         public string Headline { get; set; }
+        public string StateOrder { get; set; }
         public int Total {  get; set; }
     }
 }

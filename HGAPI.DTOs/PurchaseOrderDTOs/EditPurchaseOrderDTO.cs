@@ -35,6 +35,11 @@ namespace HGAPI.DTOs.PurchaseOrderDTOs
         [MaxLength(30, ErrorMessage = "El campo Titular solo puede tener 30 caracteres.")]
         public string Headline { get; set; }
 
+        [Display(Name = "estado")]
+        [Required(ErrorMessage = "El campo estado es obligario,")]
+        [MaxLength(50, ErrorMessage = "El campo estado solo puede tener 50 caracteres.")]
+        public string StateOrder { get; set; }
+
         [Display(Name = "Total")]
         [Required(ErrorMessage = "El campo total es obligario,")]
         [MaxLength(30, ErrorMessage = "El campo total solo puede tener 30 caracteres.")]
