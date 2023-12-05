@@ -34,3 +34,7 @@ CREATE TABLE PurchaseOrder(
    foreign key (IdProductGames) references ProductGames(Id)
 );
 GO
+SET IDENTITY_INSERT ProductGames ON;
+INSERT INTO ProductGames (Id, NameProduct, DescriptionProduct, PriceProduct, TypeProduct)
+VALUES (100, 'Aumento de vida 200', 'Aumento de vida 200', 2, 'Vida');
+SET IDENTITY_INSERT ProductGames OFF;

@@ -72,6 +72,23 @@ namespace HGAPI.Endpoints
                 else
                     return Results.StatusCode(500);
             });
+
+            app.MapGet("/order/{idUser}/pay", async (int idUser, PuchaseOrderDAL purchaseOrderDAL) =>
+            {                
+                var result = await purchaseOrderDAL.GetOrderByUser(idUser);
+                if (result != null && result.Count > 0)
+                    return Results.Ok(result);
+                else
+                    return Results.NoContent();
+            });
+            app.MapGet("/order/{idUser}/done", async (int idUser, PuchaseOrderDAL purchaseOrderDAL) =>
+            {
+                var result = await purchaseOrderDAL.UpdateOrderByUser(idUser);              
+                if (result != 0)
+                    return Results.Ok(result);
+                else
+                    return Results.StatusCode(500);
+            });
         }
     }
 }

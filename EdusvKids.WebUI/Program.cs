@@ -15,15 +15,17 @@ builder.Services.AddHttpClient("API", c =>
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {     
-        options.LoginPath = "/Account/Login"; // Ruta de inicio de sesión
+        options.LoginPath = "/Account/SignIn"; // Ruta de inicio de sesión
         // Configura el nombre del parámetro de URL para redireccionamiento no autorizado        
     });
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+app.UseExceptionHandler("/Home/Error");
+app.UseStatusCodePagesWithReExecute("/Home/Error/{0}");
+if (app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
+   
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
@@ -38,6 +40,6 @@ app.UseAuthorization(); // Habilita la autorización
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Vida}/{id?}");
+    pattern: "{controller=Home}/{action=Inicio}/{id?}");
 
 app.Run();

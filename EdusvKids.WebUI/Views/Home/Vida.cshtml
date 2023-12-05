@@ -58,12 +58,14 @@
                         <p>Aumentar la vida maxima del player permanentemente de 100 a 200</p>
                     </div>
 
-                   
-                    <button class="add-to-cart">
+                    <button type="button" id="btnPay" class="add-to-cart">
+                        Comprar                       
+                    </button>
+                   @*  <button class="add-to-cart">
                         <a href="https://buy.stripe.com/test_fZe2bQ7Okaao7289AH">
                             Comprar
                         </a>
-                    </button>
+                    </button> *@
                 </div>
             </div>
 
@@ -76,7 +78,27 @@
             </div>
         </div>
     </footer>
-    <script src="~/js/Vida.js"></script>
+    <script src="~/js/Vida.js"></script>   
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>  
+    <script>
+        $(function () { 
+            $("#btnPay").click(function () {             
+                $.ajax({
+                    url: '@Url.Action("Pay", "CheckOut")',
+                    data: { productName: 'Aumento de vida 200', total: 2, Id: 100 },
+                    type:'Post',
+                    success: function (objResult) {
+                         if (objResult && objResult.result && objResult.result== 1){
+                            document.location = 'https://buy.stripe.com/test_fZe2bQ7Okaao7289AH';
+                         }
+                         else {
+                             alert("Sucedio un error al enviar el pago");
+                         }
+                   }
+              });
+            });
+        })
+    </script>
 </body>
 </html>
 

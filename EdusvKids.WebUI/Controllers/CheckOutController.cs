@@ -1,5 +1,6 @@
 ﻿using HGAPI.DTOs.PurchaseOrderDTOs;
 using HGAPI.Models.EN;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Stripe;
 using Stripe.Checkout;
@@ -49,7 +50,7 @@ namespace EdusvKids.WebUI.Controllers
         {
             return View();
         }
-        public async Task<IActionResult> CheckOut( string productName, decimal price, int total, int Id)
+        public async Task<IActionResult> CheckOut2( string productName, decimal price, int total, int Id)
         {
 
             int amount = (int)total / (int)price;
@@ -109,6 +110,34 @@ namespace EdusvKids.WebUI.Controllers
             }      
             else
                 return View("Error");
+
+        }
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Pay(string productName, int total, int Id)
+        {
+           
+            DateTime now = DateTime.Now;
+            var claimsPrincipal = User as ClaimsPrincipal;
+            int idUser = 0;
+            int.TryParse(claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier)?.Value, out idUser);
+            string numOrder = Guid.NewGuid().ToString();
+            CreatePurchaseOrderDTO purchaseOrderDTO = new CreatePurchaseOrderDTO
+            {
+                IdProductGames = Id,
+                IdUserPlayer = idUser,
+                NameOrder = numOrder,
+                DateOrder = DateTime.Now,
+                Headline = productName,
+                Total = total
+            };
+            var response = await _httpClient.PostAsJsonAsync("/order", purchaseOrderDTO);
+            if (response.IsSuccessStatusCode)
+            {
+                return Json(new { result = 1 });
+            }
+            else
+                return Json(new { result = 0 });
 
         }
     }

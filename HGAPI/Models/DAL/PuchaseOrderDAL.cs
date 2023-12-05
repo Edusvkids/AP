@@ -14,6 +14,7 @@ namespace HGAPI.Models.DAL
 
         public async Task<int> Create(PurchaseOrder purchaseOrder)
         {
+            purchaseOrder.StateOrder = "Pay";
             _context.Add(purchaseOrder);
             return await _context.SaveChangesAsync();
         }
@@ -23,7 +24,21 @@ namespace HGAPI.Models.DAL
             var purchaseOrder = await _context.purchaseOrder.FirstOrDefaultAsync(x => x.Id == id);
             return purchaseOrder != null ? purchaseOrder : new PurchaseOrder();
         }
-
+        public async Task<List<PurchaseOrder>> GetOrderByUser(int id)
+        {
+            var purchaseOrders = await _context.purchaseOrder.Where(x => x.IdUserPlayer == id && x.StateOrder=="Pay").ToListAsync();
+            return purchaseOrders != null ? purchaseOrders : new List<PurchaseOrder>();
+        }
+        public async Task<int> UpdateOrderByUser(int id)
+        {
+            int result = 0;
+            var purchaseOrders = await _context.purchaseOrder.Where(x => x.IdUserPlayer == id && x.StateOrder == "Pay").ToListAsync();
+            foreach (var item in purchaseOrders) {
+                item.StateOrder = "Done";
+            }           
+             result = await _context.SaveChangesAsync();            
+            return result;
+        }
         public async Task<int> Edit(PurchaseOrder purchaseOrder)
         {
             int result = 0;
