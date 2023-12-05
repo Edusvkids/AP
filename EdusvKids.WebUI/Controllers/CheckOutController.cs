@@ -3,6 +3,7 @@ using HGAPI.Models.EN;
 using Microsoft.AspNetCore.Mvc;
 using Stripe;
 using Stripe.Checkout;
+using System.Security.Claims;
 using static HGAPI.DTOs.PurchaseOrderDTOs.SearchResultPurchaseOrderDTO;
 namespace EdusvKids.WebUI.Controllers
 {
@@ -54,10 +55,14 @@ namespace EdusvKids.WebUI.Controllers
             int amount = (int)total / (int)price;
 
             DateTime now = DateTime.Now;
+            var claimsPrincipal = User as ClaimsPrincipal;
+            int idUser = 0;
+            int.TryParse(claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier)?.Value, out idUser);
             string numOrder = Guid.NewGuid().ToString();
             CreatePurchaseOrderDTO purchaseOrderDTO = new CreatePurchaseOrderDTO
             {
                 IdProductGames = Id,
+                IdUserPlayer = idUser,
                 NameOrder = numOrder,
                 DateOrder=DateTime.Now,
                 Headline=productName,
