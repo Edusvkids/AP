@@ -1,15 +1,24 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HGAPI.DTOs.PurchaseOrderDTOs;
+using HGAPI.Models.EN;
+using Microsoft.AspNetCore.Mvc;
 using Stripe;
 using Stripe.Checkout;
+using static HGAPI.DTOs.PurchaseOrderDTOs.SearchResultPurchaseOrderDTO;
 namespace EdusvKids.WebUI.Controllers
 {
     public class CheckOutController : Controller
     {
+        readonly HttpClient _httpClient;
+        public CheckOutController(IHttpClientFactory httpClient)
+        {
+            _httpClient = httpClient.CreateClient("API");
+
+        }
         public IActionResult Index()
         {
             return View();
         }
-        public IActionResult OrderConfirmation()
+        public async Task<IActionResult> OrderConfirmation()
         {
             var service = new SessionService();
             Session session = service.Get(TempData["Session"].ToString());
@@ -18,7 +27,11 @@ namespace EdusvKids.WebUI.Controllers
             if (session.PaymentStatus == "paid")
             {
                 var transaction = session.PaymentIntentId.ToString();
-                return View("Succes");
+                var response = await _httpClient.PutAsJsonAsync("/order", new { NumOrder= TempData["NumOrder"].ToString() });
+                if (response.IsSuccessStatusCode)
+                {
+                    return View("Succes");
+                }                   
             }
             return View("Login");
         }
@@ -31,59 +44,66 @@ namespace EdusvKids.WebUI.Controllers
         {
             return View();
         }
-        public IActionResult CheckOut(string productName, decimal price, decimal total, int Id)
+        public IActionResult Error()
+        {
+            return View();
+        }
+        public async Task<IActionResult> CheckOut( string productName, decimal price, int total, int Id)
         {
 
             int amount = (int)total / (int)price;
 
             DateTime now = DateTime.Now;
-
-            //CreateOrderInputDTOs order = new CreateOrderInputDTOs()
-            //{
-            //    DateOrder = now,
-            //    Quantity = amount,
-            //    email = "CryptoCurrenciesStripe@gmail.com",
-            //    product_id = Id,
-            //    total = total
-            //};
-
-           // var setOrder = _orderBL.AddOrder(order);
-
-
-            var domain = "https://paymentgateway.somee.com/";
-
-            var options = new SessionCreateOptions
+            string numOrder = Guid.NewGuid().ToString();
+            CreatePurchaseOrderDTO purchaseOrderDTO = new CreatePurchaseOrderDTO
             {
-                SuccessUrl = domain + $"CheckOut/OrderConfirmation/",
-                CancelUrl = domain + "CheckOut/Login",
-                LineItems = new List<SessionLineItemOptions>(),
-                Mode = "payment"
+                IdProductGames = Id,
+                NameOrder = numOrder,
+                DateOrder=DateTime.Now,
+                Headline=productName,
+                Total = total
             };
-
-            var sessionListItem = new SessionLineItemOptions
+            var response = await _httpClient.PostAsJsonAsync("/order", purchaseOrderDTO);
+            if (response.IsSuccessStatusCode)
             {
-                PriceData = new SessionLineItemPriceDataOptions
+                var domain = "https://paymentgateway.somee.com/";
+
+                var options = new SessionCreateOptions
                 {
-                    Currency = "usd",
-                    UnitAmount = (long)(price * 100),
-                    ProductData = new SessionLineItemPriceDataProductDataOptions
+                    SuccessUrl = domain + $"CheckOut/OrderConfirmation/",
+                    CancelUrl = domain + "CheckOut/Login",
+                    LineItems = new List<SessionLineItemOptions>(),
+                    Mode = "payment"
+                };
+
+                var sessionListItem = new SessionLineItemOptions
+                {
+                    PriceData = new SessionLineItemPriceDataOptions
                     {
-                        Name = productName.ToString(),
-                    }
-                },
-                Quantity = amount
-            };
+                        Currency = "usd",
+                        UnitAmount = (long)(price * 100),
+                        ProductData = new SessionLineItemPriceDataProductDataOptions
+                        {
+                            Name = productName.ToString(),
+                        }
+                    },
+                    Quantity = amount
+                };
 
-            options.LineItems.Add(sessionListItem);
+                options.LineItems.Add(sessionListItem);
 
 
-            var service = new SessionService();
-            Session session = service.Create(options);
+                var service = new SessionService();
+                Session session = service.Create(options);
 
-            TempData["Session"] = session.Id;
+                TempData["Session"] = session.Id;
+                TempData["NumOrder"] = numOrder;
 
-            Response.Headers.Add("Location", session.Url);
-            return new StatusCodeResult(303);
+                Response.Headers.Add("Location", session.Url);
+                return new StatusCodeResult(303);
+            }      
+            else
+                return View("Error");
 
         }
     }
