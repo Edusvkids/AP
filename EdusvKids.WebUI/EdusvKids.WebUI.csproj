@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+    <PackageReference Include="Stripe.net" Version="43.5.0" />
   </ItemGroup>
 
   <ItemGroup>
