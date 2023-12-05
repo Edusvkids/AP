@@ -4,6 +4,16 @@ namespace HGAPI.DTOs.PurchaseOrderDTOs
 {
     public class CreatePurchaseOrderDTO
     {
+        [Display(Name = "id usuario")]
+        [Required(ErrorMessage = "El campo id usuario es obligario,")]
+        [MaxLength(50, ErrorMessage = "El campo id usuario solo puede tener 50 caracteres.")]
+        public int IdUserPlayer { get; set; }
+
+        [Display(Name = "id producto")]
+        [Required(ErrorMessage = "El campo id porducto es obligario,")]
+        [MaxLength(50, ErrorMessage = "El campo id producto solo puede tener 50 caracteres.")]
+        public int IdProductGames { get; set; }
+
         [Display(Name ="Nombre")]
         [Required(ErrorMessage ="El campo nombre es obligario,")]
         [MaxLength(50, ErrorMessage ="El campo nombre solo puede tener 50 caracteres.")]

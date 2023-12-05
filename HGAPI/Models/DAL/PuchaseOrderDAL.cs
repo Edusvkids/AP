@@ -68,5 +68,10 @@ namespace HGAPI.Models.DAL
             query = query.OrderByDescending(s => s.Id).Skip(skip).Take(take);
             return await query.ToListAsync();
         }
+
+        public async Task<int> CountSearch(PurchaseOrder purchaseOrder)
+        {
+            return await Query(purchaseOrder).CountAsync();
+        }
     }
 }

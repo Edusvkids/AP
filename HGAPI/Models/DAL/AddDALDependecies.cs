@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using HGAPI.Models.EN;
+using Microsoft.EntityFrameworkCore;
 
 namespace HGAPI.Models.DAL
 {
@@ -17,6 +18,7 @@ namespace HGAPI.Models.DAL
             services.AddScoped<UserPlayerDAL>();
             services.AddScoped<AccountDAL>();
             services.AddScoped<ProductGamesDAL>();
+            services.AddScoped<PuchaseOrderDAL>();
             return services;
         }
     }

@@ -9,6 +9,7 @@ namespace HGAPI.Models.DAL
 			app.AccountEndpoints();
 			app.AddUserPlayerEndpoints();
 			app.AddProductGamesEndPoints();
+			app.AddPurchaseOrderEndpoint();
 			return app;
 		}
 	}
