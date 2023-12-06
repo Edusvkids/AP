@@ -40,6 +40,6 @@ app.UseAuthorization(); // Habilita la autorización
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Inicio}/{id?}");
+    pattern: "{controller=Home}/{action=Cuenta}/{id?}");
 
 app.Run();
